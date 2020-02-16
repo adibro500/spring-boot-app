@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 @RestController
 @RequestMapping("/api/users")
+@CrossOrigin(origins = "*")
+
 public class Rest2Controller {
 	@Autowired
 	SayHelloService shs;
@@ -49,7 +52,14 @@ public class Rest2Controller {
 		return sh;
 	}
 	
+	@PostMapping("/delete")
+	public boolean deleteById(@RequestBody Map<String, String> deleteModel) {
+		return shs.deleteById(deleteModel.get("id").toString());
+	}
 	
-	
+	@GetMapping("/byKio/{kio}")
+	public List<SayHello> getByKio(@PathVariable String kio) {
+		return shs.getByKio(kio);
+	}
 
 }

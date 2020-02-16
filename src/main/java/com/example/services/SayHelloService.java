@@ -32,6 +32,21 @@ public class SayHelloService {
 		return sayHelloRepository.findById(id).orElse(null);
 	}
 	
+	
+	public boolean deleteById(String id) {
+		try {
+		sayHelloRepository.deleteById(id);
+		} catch(Error e) {
+			e.getStackTrace();
+		}
+		return true;
+	}
+	
+	
+	public List<SayHello> getByKio(String kio) {
+		return sayHelloRepository.findByKio(kio);
+	}
+	
 	public void saveObj(SayHello sh) {
 	sayHelloRepository.save(sh);
 	}
