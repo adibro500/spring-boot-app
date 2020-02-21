@@ -46,10 +46,11 @@ public class Rest2Controller {
 	@PostMapping("/insert")
 	public SayHello insert(@RequestBody Map<String, String> req) {
 		SayHello sh = new SayHello();
+		SayHello hj = new SayHello();
 		sh.setText(req.get("text").toString());
 		sh.setKio(req.get("kio").toString());
-		shs.saveObj(sh);
-		return sh;
+		SayHello pl = shs.saveObj(sh);
+		return pl;
 	}
 	
 	@PostMapping("/delete")

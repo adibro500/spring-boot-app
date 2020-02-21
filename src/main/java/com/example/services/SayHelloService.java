@@ -47,8 +47,9 @@ public class SayHelloService {
 		return sayHelloRepository.findByKio(kio);
 	}
 	
-	public void saveObj(SayHello sh) {
+	public SayHello saveObj(SayHello sh) {
 	sayHelloRepository.save(sh);
+	return sh;
 	}
 	
 }
