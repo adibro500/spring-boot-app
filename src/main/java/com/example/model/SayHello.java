@@ -10,10 +10,12 @@ import javax.persistence.Table;
 import org.springframework.stereotype.Component;
 
 @Entity
-@Table(name="sayhello", catalog="hellodb")
+@Table(name="sayhello")
 public class SayHello {
     @Id
+    @Column
 	private String text;
+    @Column
 	private String kio;
 
 	public String getText() {
